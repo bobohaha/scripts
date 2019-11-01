@@ -1,0 +1,69 @@
+
+代码：
+
+private void openAppSwitch(String appName, boolean on) throws UiObjectNotFoundException {
+        UiCollection collection = new UiCollection(new UiSelector().className("android.widget.LinearLayout"));
+        UiSelector appNameSelector = new UiSelector().resourceId("android:id/title").text(appName);
+        UiSelector switchOffSelector = new UiSelector().resourceId("android:id/switch_widget")
+                .className("android.widget.Switch").text("OFF");
+        UiSelector switchOnSelector = new UiSelector().resourceId("android:id/switch_widget")
+                .className("android.widget.Switch").text("ON");
+        if (on) {
+            if (collection.getChild(appNameSelector).exists() &&
+                    collection.getChild(switchOffSelector).exists()) {
+                new UiObject(appNameSelector).clickAndWaitForNewWindow(5000L);
+            }
+        } else {
+            if (collection.getChild(appNameSelector).exists() &&
+                    collection.getChild(switchOnSelector).exists()) {
+                new UiObject(appNameSelector).clickAndWaitForNewWindow(5000L);
+            }
+			
+			
+			
+			
+			1572408000
+			1572409800
+			
+			1572364800     00:00:00
+			
+"h_nt": 1, 
+"h_dt": 1, 
+"h_src": 3, 
+"zone": 28800, 
+"h_p": 38226, 
+"h_lc": "zh-Hans-CN", 
+"h_ch": "InHouse",
+ "h_did": "D6699344-6C6E-4AF6-AE80-8DCDC5F102F3",
+ "stamp": 1572370200,
+ "token": "CJyHnBoQ+vDj7QUYASIINUJBNHF0cDg=.6f399286bce497b0",
+ "h_ts": 1572403363805L,
+ "h_av": "4.0.1032",
+ "kid": 306537937891354L,
+ #"CJyHnBoQ+vDj7QUYASIINUJBNHF0cDg=.6f399286bce497b0": "CJyHnBoQ+vDj7QUYASIINUJBNHF0cDg=.6f399286bce497b0",
+ "h_bu": "20191029.142820",
+ "h_m": 54985628, 
+ "h_dt_sub": 1, "cate: 1}"
+ 
+"h_lc":"zh-Hans-CN",
+"h_ch":"InHouse",
+"h_dt_sub":1,
+"zone":28800,
+"h_src":3,
+"cate":1,
+"h_ts":1572403363805,
+"h_av":"4.0.1032",
+"h_nt":1,
+"h_did":"D6699344-6C6E-4AF6-AE80-8DCDC5F102F3",
+"h_m":54985628,
+"token":"CJyHnBoQ+vDj7QUYASIINUJBNHF0cDg=.6f399286bce497b0",
+"h_bu":"20191029.142820",
+"h_p":38226,
+"kid":306537937891354,
+"stamp":1572408000,
+"h_dt":1}
+
+
+
+
+result = curl -H 'Content-Type: application/json; charset=utf-8' -H 'Host: m.ipalfish.com' -H 'User-Agent: okhttp/3.11.0' --data-binary '{"h_lc":"zh-Hans-CN","h_ch":"InHouse","h_dt_sub":1,"zone":28800,"h_src":3,"cate":1,"h_ts":1572490869672,"h_av":"4.0.1033","h_nt":1,"h_did":"5DB8E5C0-3269-4F41-BD84-24B5C9431C8F","h_m":78556575,"token":"CJ\/buiUQyfTl7QUYASIIeHFuU2xINnE=.75382e59e660ac53","h_bu":"20191030.154341","h_p":598,"kid":306537937891354,"stamp":1572532200,"h_dt":1}' --compressed 'https://m.ipalfish.com/klian/ugc/interactclass/classroomtime/hold'
