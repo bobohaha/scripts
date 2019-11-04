@@ -11,9 +11,9 @@ sys.setdefaultencoding('utf8')
 class Tools:
 
     def run(self, _phone, _password):
-        print "get user info:"
+        print "Login: "
         user_info = self.get_user_info(_phone, _password)
-        print "about class:"
+        print "About Class: "
         self.aboult_class_sh(user_info)
 
     def aboult_class_sh(self, _data):
@@ -34,7 +34,7 @@ class Tools:
                 break
 
             else:
-                print "class time is end"
+                print "class time is end, next: "
                 continue
         pass
     
@@ -55,7 +55,6 @@ class Tools:
     def get_current_Zore_times(self):
         today = datetime.date.today()
         zore_times = int(time.mktime(today.timetuple()))
-        print zore_times
         return zore_times
         
     def get_current_times(self):
@@ -71,13 +70,11 @@ class Tools:
         return json_data
     
     def get_token(self, _response):
-        token = _response.json()["data"]["token"]
-        print token
+        token = _response["data"]["token"]
         return token
     
     def get_uid(self, _response):
-        uid = _response.json()["data"]["member_info"]["id"]
-        print uid
+        uid = _response["data"]["member_info"]["id"]
         return uid
     
     def login(self, _phone, _password):
@@ -91,7 +88,13 @@ class Tools:
         }
         
         response = requests.post(url, data=json.dumps(request_param))
-        return response
+        if response.status_code == 200:
+            response_json = response.json()
+            if response_json['ret'] != 1:
+                print response_json['msg']
+                sys.exit()
+            print "Login success"
+        return response_json
    
     def get_pw(self, pw):
         pw = str(pw)
@@ -107,3 +110,4 @@ if __name__ == '__main__':
     password = sys.argv[2]
     _AboutClass = Tools()
     _AboutClass.run(phone, password)
+    # _AboutClass.login(phone, password)
