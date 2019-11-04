@@ -1,3 +1,4 @@
+# coding:utf-8
 import os
 import sys
 import json
@@ -29,9 +30,12 @@ class Tools:
                 dataJson = self.get_dick_to_json(_data)
                 tag = "\' "
                 commandDataFormat = tag + str(dataJson) + tag
-                print commandDataFormat
-                os.system('sh ./run.sh ' + commandDataFormat)
-                break
+                result = os.popen('sh ./run.sh ' + commandDataFormat).read()
+                result_json = json.loads(result)
+                if result_json['ret'] != 1:
+                    print result_json['msg']
+                    if '无可用课时' in result_json['msg']:
+                        break
 
             else:
                 print "class time is end, next: "
